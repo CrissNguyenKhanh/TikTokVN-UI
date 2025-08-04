@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './header.module.scss';
 import images from '~/src/assets/images';
@@ -8,6 +8,8 @@ import Tippy from '@tippyjs/react/headless';
 import { useEffect, useState } from 'react';
 import { ProperWrapper } from '~/Layout/Proper';
 import AccountItems from '~/Components/AccountItem';
+import Button from '~/Components/Button';
+import { href } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -31,10 +33,10 @@ function Header() {
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <ProperWrapper>
                                 <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItems/>
-                                <AccountItems/>
-                                <AccountItems/>
-                                <AccountItems/>
+                                <AccountItems />
+                                <AccountItems />
+                                <AccountItems />
+                                <AccountItems />
                             </ProperWrapper>
                         </div>
                     )}
@@ -51,7 +53,12 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('actions')}></div>
+                <div className={cx('actions')}>
+                    <Button text>Upload</Button>
+                    <Button primary >
+                        Log in
+                    </Button>
+                </div>
             </div>
         </header>
     );
