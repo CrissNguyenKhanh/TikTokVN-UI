@@ -16,6 +16,7 @@
     width: var(--default-layout-width);
     display: flex;
     align-items: center;
+    padding: 0 var(--search-top-spacer);
     justify-content: space-between;
 }
 .search,
@@ -90,12 +91,13 @@
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
-.more-btn{
-     font-size: 2rem;
-     margin-left: 28px;
-     padding: 4px 9px;
-     background: transparent;
+.more-btn {
+    font-size: 2rem;
+    margin-left: 28px;
+    padding: 4px 9px;
+    cursor: pointer;
+    background: transparent;
 }
-.actions{
+.actions {
     display: flex;
 }

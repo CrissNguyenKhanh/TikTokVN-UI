@@ -15,19 +15,38 @@ import {
 import styles from './header.module.scss';
 import images from '~/src/assets/images';
 import Tippy from '@tippyjs/react/headless';
-import { useEffect, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 import { ProperWrapper } from '~/Layout/Proper';
 import AccountItems from '~/Components/AccountItem';
 import Button from '~/Components/Button';
-import { href } from 'react-router-dom';
+import { data, href } from 'react-router-dom';
 import Menu from '~/Layout/Proper/Menu';
 
 const cx = classNames.bind(styles);
 
+const handleOnchange = (menuItem) => {
+    console.log(menuItem);
+};
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        //đi sâu vào vấn đề khi mà click một trong 2 item thì nó sẽ bám theo cái index đó
+        children: {
+            title: 'language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'VietNam',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -83,7 +102,7 @@ function Header() {
                 <div className={cx('actions')}>
                     <Button text>Upload</Button>
                     <Button primary>Log in</Button>
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleOnchange}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
