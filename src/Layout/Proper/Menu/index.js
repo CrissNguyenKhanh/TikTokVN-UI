@@ -10,7 +10,7 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 const DefaultFn = () => {};
 
-function Menu({ children, items = [], onChange =DefaultFn }) {
+function Menu({ children, items = [], onChange = DefaultFn }) {
     //tao mot cai history goc
     const [history, setHistory] = useState([{ data: items }]);
     //luon luon ow sau thang lon nhat
@@ -40,7 +40,6 @@ function Menu({ children, items = [], onChange =DefaultFn }) {
     return (
         <div>
             <Tippy
-                visible
                 interactive
                 placement={'bottom-end'}
                 delay={[0, 700]}
@@ -59,6 +58,9 @@ function Menu({ children, items = [], onChange =DefaultFn }) {
                         </ProperWrapper>
                     </div>
                 )}
+                onHide={() => {
+                    setHistory((prev) => prev.slice(0, 1));
+                }}
             >
                 {children}
             </Tippy>
