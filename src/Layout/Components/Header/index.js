@@ -1,6 +1,16 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleQuestion,
+    faCircleXmark,
+    faEarthAsia,
+    faEllipsisV,
+    faEllipsisVertical,
+    faKeyboard,
+    faMagnifyingGlass,
+    faSignIn,
+    faSpinner,
+} from '@fortawesome/free-solid-svg-icons';
 
 import styles from './header.module.scss';
 import images from '~/src/assets/images';
@@ -10,15 +20,32 @@ import { ProperWrapper } from '~/Layout/Proper';
 import AccountItems from '~/Components/AccountItem';
 import Button from '~/Components/Button';
 import { href } from 'react-router-dom';
+import Menu from '~/Layout/Proper/Menu';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'FeedBack and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'keyboard shortcuts',
+    },
+];
 
 function Header() {
     const [resultVisisble, setResultVisible] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
-            setResultVisible([1, 2, 3]);
+            setResultVisible([]);
         }, 1000);
     }, []);
 
@@ -28,7 +55,7 @@ function Header() {
                 <img src={images.logo} alt="Tiktok" />
                 <Tippy
                     interactive
-                    visible={resultVisisble}
+                    visible={resultVisisble.length > 0}
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <ProperWrapper>
@@ -55,9 +82,12 @@ function Header() {
                 </Tippy>
                 <div className={cx('actions')}>
                     <Button text>Upload</Button>
-                    <Button primary >
-                        Log in
-                    </Button>
+                    <Button primary>Log in</Button>
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
