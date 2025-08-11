@@ -3,23 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
     faCircleXmark,
-    faCloudUpload,
     faCoins,
     faEarthAsia,
-    faEllipsisV,
     faEllipsisVertical,
     faGear,
     faKeyboard,
     faMagnifyingGlass,
-    faMessage,
     faSignIn,
     faSignOut,
     faSpinner,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
-
+import Image from '~/Components/Images';
 import styles from './header.module.scss';
-import images from '~/src/assets/images';
+import images from '~/Components/assets/images';
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -29,6 +26,7 @@ import AccountItems from '~/Components/AccountItem';
 import Button from '~/Components/Button';
 import { data, href } from 'react-router-dom';
 import Menu from '~/Layout/Proper/Menu';
+import { UploadIcon } from '~/Components/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -137,7 +135,7 @@ function Header() {
                         <>
                             <Tippy offset={[16, 8]} delay={[0, 200]} content="UpLoad Video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -148,12 +146,13 @@ function Header() {
                         </>
                     )}
 
-                    <Menu items={userMenu} onChange={handleOnchange}>
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleOnchange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/ff4f1a1fea8b7cc64e23634c428b3e1e~tplv-tiktokx-cropcenter:100:100.jpeg?dr=14579&refresh_token=4ea535ab&x-expires=1754881200&x-signature=BGOwVqQr4II7HQnoGPgErt%2Fi3Ww%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
+                                src="https://sm.ign.com/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.jpg"
                                 alt="nguyen van a"
+                                fallBack="https://files.fullstack.edu.vn/f8-prod/user_avatars/18159/6466353972973.jpg"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
