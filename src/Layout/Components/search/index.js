@@ -1,4 +1,4 @@
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faL, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { ProperWrapper } from '~/Layout/Proper';
 import AccountItems from '~/Components/AccountItem';
@@ -11,8 +11,9 @@ const cx = classNames.bind(styles);
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
-    const [resultVisisble, setResultVisible] = useState([]);
+    const [resultValue, setResultValue] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
@@ -21,10 +22,21 @@ function Search() {
         inputRef.current.focus();
     };
     useEffect(() => {
-        setTimeout(() => {
-            setResultVisible([1]);
-        }, 1000);
-    }, []);
+        if (!searchValue.trim()) {
+            setResultValue([]);
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setResultValue(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    }, [searchValue]);
 
     const handleHideResult = () => {
         setShowResult(false);
@@ -33,15 +45,14 @@ function Search() {
     return (
         <HeadlessTippy
             interactive
-            visible={showResult && resultVisisble.length > 0}
+            visible={showResult && resultValue.length > 0}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <ProperWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        <AccountItems />
-                        <AccountItems />
-                        <AccountItems />
-                        <AccountItems />
+                        {resultValue.map((result) => (
+                            <AccountItems key={result.id} data={result} />
+                        ))}
                     </ProperWrapper>
                 </div>
             )}
@@ -58,12 +69,12 @@ function Search() {
                     }}
                     onFocus={() => setShowResult(true)}
                 />
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button className={cx('clear')} onClick={handleClear}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
                 <button className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
