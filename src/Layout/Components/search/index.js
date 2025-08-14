@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState, useRef } from 'react';
 import styles from './search.module.scss';
 import classNames from 'classnames/bind';
+import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
@@ -15,19 +16,22 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const searchDebounce = useDebounce(searchValue, 500);
+
     const inputRef = useRef();
 
     const handleClear = () => {
         setSearchValue('');
         inputRef.current.focus();
     };
+    //gap chuoi rong se tu return ko chay xuong api
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!searchDebounce.trim()) {
             setResultValue([]);
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchDebounce)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 setResultValue(res.data);
@@ -36,7 +40,7 @@ function Search() {
             .catch((err) => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [searchDebounce]);
 
     const handleHideResult = () => {
         setShowResult(false);
