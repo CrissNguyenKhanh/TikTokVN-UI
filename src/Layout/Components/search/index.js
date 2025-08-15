@@ -8,6 +8,7 @@ import styles from './search.module.scss';
 import classNames from 'classnames/bind';
 import { useDebounce } from '~/hooks';
 import * as SearchApi from '~/ApiService/serachSevice';
+
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -23,6 +24,20 @@ function Search() {
     const handleClear = () => {
         setSearchValue('');
         inputRef.current.focus();
+    };
+    const handleChange = (e) => {
+        let value = e.target.value;
+
+        // Nếu ký tự đầu tiên là space thì xóa nó
+        if (value.startsWith(' ')) {
+            return;
+        }
+
+        setSearchValue(value);
+    };
+
+    const handleClick = (e) => {
+        e.preventeDefault();
     };
     //gap chuoi rong se tu return ko chay xuong api
     useEffect(() => {
@@ -66,9 +81,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => {
-                        setSearchValue(e.target.value);
-                    }}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
@@ -78,7 +91,7 @@ function Search() {
                 )}
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>

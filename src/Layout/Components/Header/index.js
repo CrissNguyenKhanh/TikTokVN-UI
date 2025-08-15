@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
@@ -19,6 +20,7 @@ import Button from '~/Components/Button';
 import Menu from '~/Layout/Proper/Menu';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/Components/Icons';
 import Search from '../search';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -87,7 +89,10 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok" />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
+
                 <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
@@ -116,7 +121,7 @@ function Header() {
                         </>
                     )}
 
-                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleOnchange}>
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleOnchange} hideOnClick={false}>
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}

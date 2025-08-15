@@ -10,7 +10,7 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 const DefaultFn = () => {};
 
-function Menu({ children, items = [], onChange = DefaultFn }) {
+function Menu({ children, items = [], onChange = DefaultFn, hideOnClick = true }) {
     //tao mot cai history goc
     const [history, setHistory] = useState([{ data: items }]);
     //luon luon ow sau thang lon nhat
@@ -43,6 +43,7 @@ function Menu({ children, items = [], onChange = DefaultFn }) {
                 interactive
                 placement={'bottom-end'}
                 delay={[0, 700]}
+                hideOnClick={hideOnClick}
                 render={(attrs) => (
                     <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                         <ProperWrapper className={cx('menu-proper')}>
