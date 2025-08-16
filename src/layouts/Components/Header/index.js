@@ -17,11 +17,10 @@ import images from '~/Components/assets/images';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import Button from '~/Components/Button';
-import Menu from '~/Layout/Proper/Menu';
+import Menu from '~/layouts/Proper/Menu';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/Components/Icons';
 import Search from '../search';
-import routesConfig from '~/config/routes';
-
+import config from '~/config';
 const cx = classNames.bind(styles);
 
 const handleOnchange = (menuItem) => {
@@ -45,7 +44,6 @@ const MENU_ITEMS = [
                     code: 'vi',
                     title: 'VietNam',
                 },
-                
             ],
         },
     },
@@ -90,7 +88,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo-link')}>
+                <Link to={config.routesConfig.home} className={cx('logo-link')}>
                     <img src={images.logo} alt="Tiktok" />
                 </Link>
 

@@ -1,5 +1,5 @@
 // lay mot request ben kia
-import * as request from '~/utils/request';
+import * as request from '~/utils/httpRequest';
 
 export const searchApi = async (q, type = 'less') => {
     try {

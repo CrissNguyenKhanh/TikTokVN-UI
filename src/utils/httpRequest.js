@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 const requestSearch = axios.create({
-    baseURL: 'https://tiktok.fullstack.edu.vn/api/',
-    timeout: 1000,
-    headers: { 'X-Custom-Header': 'foobar' },
+    baseURL: process.env.REACT_APP_BASE_URL,
 });
 
 //custom get luon return ve res.data (can cu theo api ben backend gui sang)
