@@ -37,6 +37,23 @@ function Menu({ children, items = [], onChange = DefaultFn, hideOnClick = true }
             );
         });
     };
+    const handleBack = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <ProperWrapper className={cx('menu-proper')}>
+                {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+                <div className={cx('menu-body')}>{renderMenuItems()}</div>
+            </ProperWrapper>
+        </div>
+    );
+  
+    //reset ve page dau tien 
+    const handleResetMenu = () => {
+        setHistory((prev) => prev.slice(0, 1));
+    };
     return (
         <div>
             <Tippy
@@ -44,24 +61,8 @@ function Menu({ children, items = [], onChange = DefaultFn, hideOnClick = true }
                 placement={'bottom-end'}
                 delay={[0, 700]}
                 hideOnClick={hideOnClick}
-                render={(attrs) => (
-                    <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                        <ProperWrapper className={cx('menu-proper')}>
-                            {history.length > 1 && (
-                                <Header
-                                    title={current.title}
-                                    onBack={() => {
-                                        setHistory((prev) => prev.slice(0, prev.length - 1));
-                                    }}
-                                />
-                            )}
-                            <div className={cx('menu-body')}>{renderMenuItems()}</div>
-                        </ProperWrapper>
-                    </div>
-                )}
-                onHide={() => {
-                    setHistory((prev) => prev.slice(0, 1));
-                }}
+                render={renderResult}
+                onHide={handleResetMenu}
             >
                 {children}
             </Tippy>

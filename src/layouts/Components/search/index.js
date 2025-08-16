@@ -27,7 +27,6 @@ function Search() {
     };
     const handleChange = (e) => {
         let value = e.target.value;
-
         // Nếu ký tự đầu tiên là space thì xóa nó
         if (value.startsWith(' ')) {
             return;

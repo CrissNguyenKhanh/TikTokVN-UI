@@ -19,6 +19,7 @@
         caret-color: var(--primary);
         background-color: transparent;
         font-family: ProximaNova, sans-serif;
+        padding-right: 40px;
     }
     //set khi onchangeinput thi no se doi mau btnsearch
     input:not(:placeholder-shown) ~ .search-btn {
