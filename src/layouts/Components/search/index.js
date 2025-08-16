@@ -1,13 +1,13 @@
 import { faCircleXmark, faL, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { ProperWrapper } from '~/layouts/Proper';
-import AccountItems from '~/Components/AccountItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState, useRef } from 'react';
 import styles from './search.module.scss';
 import classNames from 'classnames/bind';
 import { useDebounce } from '~/hooks';
 import * as SearchApi from '~/service/searchSevice';
+import AccountItems from '~/Components/AccountItem';
 
 const cx = classNames.bind(styles);
 

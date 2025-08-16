@@ -2,7 +2,7 @@ import Tippy from '@tippyjs/react/headless';
 import styles from './menu.module.scss';
 import classNames from 'classnames/bind';
 import { ProperWrapper } from '..';
-import Button from '~/Components/Button';
+import Button from '~/Components/Button/Button';
 import Menuitems from './MenuItems';
 import Header from './header';
 import { useState } from 'react';
