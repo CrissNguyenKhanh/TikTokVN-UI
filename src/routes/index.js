@@ -5,12 +5,14 @@ import Following from '~/page/Following';
 import Profile from '~/page/profile';
 import Upload from '~/page/Upload';
 import HeaderOnly from '~/layouts/HeaderOnly';
+import Live from '~/page/live';
 //public routes
 const publicRoutes = [
     { path: config.routesConfig.home, component: Home },
     { path: config.routesConfig.following, component: Following },
     { path: config.routesConfig.profile, component: Profile },
     { path: config.routesConfig.nickName, component: Profile },
+    { path: config.routesConfig.live, component: Live },
     { path: config.routesConfig.upLoad, component: Upload, layout: HeaderOnly },
 ];
 
