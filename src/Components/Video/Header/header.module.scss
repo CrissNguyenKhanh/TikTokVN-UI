@@ -1,0 +1,65 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; // thêm
+    padding: 8px 0;
+}
+.asideLeft {
+    display: flex;
+    align-items: flex-start; // avatar + text thẳng hàng top
+
+    .avatar {
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        margin-right: 12px; // thêm
+    }
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+
+    .title_start {
+        display: flex;
+        
+    }
+
+    .name_id {
+        font-weight: bold;
+        font-size: 1.6rem;
+        
+        margin: 0;
+    }
+
+    .full_name {
+        font-size: 1.4rem;
+        color: #888; // xám nhạt
+        margin: 0;
+        line-height: 26px;
+        margin-left: 5px;
+      
+    }
+
+    .caption {
+        margin-top: 4px;
+        font-size: 1.4rem;
+    }
+
+    .icon_music {
+        width: 1.6rem;
+        height: 1.4rem;
+        margin-right: 4px;
+    }
+    .music_title{
+        font-weight: bold;
+    }
+    // p:last-child {
+    //     display: flex;
+    //     align-items: center;
+    //     font-size: 1.3rem;
+    //     color: #555;
+    //     font-style: normal;
+    // }
+}

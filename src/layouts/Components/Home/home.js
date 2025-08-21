@@ -1,5 +1,11 @@
+import VideoTag from '~/Components/Video';
+
 function home() {
-    return <div></div>;
+    return (
+        <div>
+            <VideoTag />
+        </div>
+    );
 }
 
 export default home;

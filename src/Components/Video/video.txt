@@ -1,0 +1,7 @@
+<TikTokVideoCard>
+  <Header />
+  <VideoPlayer />
+  <ActionBar />
+  <AudioInfo />
+  <ProgressBar />
+</TikTokVideoCard>

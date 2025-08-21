@@ -1,0 +1,97 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video_main {
+    width:100%;
+    height: 100%;
+    position: relative;
+
+    .video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // video full khung
+        border-radius: 4px;
+    }
+}
+
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 12px;
+
+    button {
+        background: rgba(0, 0, 0, 0.4);
+        border: none;
+        color: white;
+        font-size: 1.4rem;
+        padding: 6px 10px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+.progressBar {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: height 0.2s ease;
+}
+
+.progressBar:hover {
+    height: 10px; /* thanh to hơn khi hover */
+}
+
+.progress {
+    height: 100%;
+    background: #fff;
+    position: relative;
+    transition: height 0.2s ease;
+}
+
+/* cái nút tròn (ban đầu ẩn) */
+.progress::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 61%;
+    transform: translate(50%, -50%);
+    width: 19px;
+    height: 18px;
+    border-radius: 68%;
+    background: black;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* khi hover vào progressBar thì hiện nút tròn */
+.progressBar:hover .progress::after {
+    opacity: 1;
+}
+.thumb {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+/* hover to scale */
+.progressBar:hover .thumb {
+    transform: translate(-50%, -50%) scale(1.3);
+}

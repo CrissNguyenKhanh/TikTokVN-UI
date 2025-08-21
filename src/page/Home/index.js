@@ -1,5 +1,10 @@
+import VideoTag from '~/Components/Video';
 function Home() {
-    return <h2 style={{ height: 2000 }}>HomePage</h2>;
+    return (
+        <div>
+            <VideoTag />
+        </div>
+    );
 }
 
 export default Home;
