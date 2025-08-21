@@ -1,8 +1,10 @@
 import VideoTag from '~/Components/Video';
+import MainVideo from '~/Components/Video/mainVideo';
 function Home() {
     return (
         <div>
-            <VideoTag />
+            <MainVideo />
+            
         </div>
     );
 }

@@ -1,0 +1,54 @@
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative; // cần để .arrow absolute theo .body
+}
+
+.direction {
+    position: absolute;
+    right: -171px; /* cách lề phải 20px */
+    top: 50%; /* căn giữa theo chiều dọc */
+    transform: translateY(-50%); /* dịch lên 1 nửa để thật sự giữa */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .arrow {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .up,
+    .down {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .up::before,
+    .down::before {
+        content: '';
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        padding: 6px;
+        display: inline-block;
+    }
+
+    .up::before {
+        transform: rotate(-135deg); // mũi tên lên
+        border-color: gray; // màu xám nhạt
+    }
+
+    .down::before {
+        transform: rotate(45deg); // mũi tên xuống
+        border-color: white; // màu trắng
+    }
+}

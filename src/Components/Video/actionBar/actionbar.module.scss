@@ -1,0 +1,58 @@
+.wrapper_iconItem {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+
+    .icon_item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0px;
+        border-radius: 50%;
+        transition: 200ms ease-in-out;
+        cursor: pointer;
+        width: 48px;
+        height: 48px;
+        background-color: rgba(206, 204, 204, 0.771);
+        margin-top: 8px;
+        margin-bottom: 0px;
+
+        svg {
+            font-size: 24px;
+            color: #333; // màu mặc định
+            transition: color 0.2s ease-in-out;
+        }
+    }
+
+    &.heart.active {
+        .icon_item {
+            background-color: rgba(255, 0, 0, 0.15); // nền nhạt
+            svg {
+                color: red; // trái tim đỏ
+            }
+        }
+    }
+
+    &.save.active {
+        .icon_item {
+            background-color: rgba(231, 229, 162, 0.15); // nền nhạt
+            svg {
+                color: rgb(214, 237, 10); // trái tim đỏ
+            }
+        }
+    }
+}
+
+.icon_music {
+    margin-top: 0.5rem;
+    height: calc(-4px + 3rem);
+    width: calc(-4px + 3rem);
+    background-size: cover;
+    border-radius: 50%;
+}

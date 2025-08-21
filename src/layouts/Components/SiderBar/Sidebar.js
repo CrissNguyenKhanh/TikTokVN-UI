@@ -9,6 +9,7 @@ import {
     HomeActiveIcon,
     UserGroupActiveIcon,
     LiveActiveIcon,
+    HeartIcon
 } from '~/Components/Icons';
 import SuggestedAccount from '~/Components/SuggestedAccount';
 import SuggestedAccountFollowingItem from '~/Components/FollowingAccount';
