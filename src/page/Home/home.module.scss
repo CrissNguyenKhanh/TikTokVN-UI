@@ -1,13 +1,6 @@
-.wrapper {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    position: relative; // cần để .arrow absolute theo .body
-}
-
 .direction {
     position: absolute;
-    right: -171px; /* cách lề phải 20px */
+    right: 0px; /* cách lề phải 20px */
     top: 50%; /* căn giữa theo chiều dọc */
     transform: translateY(-50%); /* dịch lên 1 nửa để thật sự giữa */
     display: flex;
@@ -51,5 +44,11 @@
         transform: rotate(45deg); // mũi tên xuống
         border-color: white; // màu trắng
     }
-    
+    .up.active::before {
+        border-color: white; // ví dụ khi active thì đỏ
+    }
+
+    .down.active::before {
+        border-color: gray; // active thì xám
+    }
 }

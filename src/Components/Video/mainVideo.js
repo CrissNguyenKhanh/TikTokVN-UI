@@ -4,17 +4,20 @@ import VideoTag from './video';
 
 const cx = classNames.bind(styles);
 
-function MainVideo() {
+function MainVideo({ video }) {
     return (
-        <div className={cx('wrapper')}>
-            <VideoTag className={cx('body-right')} />
-
-            <div className={cx('direction')}>
-                <div className={cx('arrow')}>
-                    <button className={cx('up')}></button>
-                    <button className={cx('down')}></button>
-                </div>
-            </div>
+        <div >
+            <VideoTag
+                avatarUrl={video.avatarUrl}
+                username={video.username}
+                fullName={video.fullName}
+                caption={video.caption}
+                isFollowing={video.isFollowing}
+                music={video.music}
+                videoList={video.videoList}
+                stats={video.stats}
+                musicThumbnail={video.musicThumbnail}
+            />
         </div>
     );
 }

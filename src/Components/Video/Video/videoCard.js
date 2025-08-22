@@ -48,8 +48,9 @@ function VideoCard({ src }) {
             <div className={cx('video_main')}>
                 <video
                     ref={videoRef}
-                    autoPlay={true}
+                        autoPlay
                     loop
+              
                     muted={isMuted}
                     className={cx('video')}
                     src={src}
